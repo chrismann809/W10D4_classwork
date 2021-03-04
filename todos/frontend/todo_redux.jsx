@@ -5,6 +5,7 @@ import configureStore from './store/store'
 import {
     receiveTodos,
     receiveTodo,
+    removeTodo,
 } from './actions/todo_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,4 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(<Root />, document.getElementById('main'))
     window.receiveTodos = receiveTodos;
     window.receiveTodo = receiveTodo;
+    window.removeTodo = removeTodo;
 })
