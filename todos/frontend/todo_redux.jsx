@@ -7,12 +7,22 @@ import {
     receiveTodo,
     removeTodo,
 } from './actions/todo_actions';
+import {
+    receiveSteps,
+    receiveStep,
+    removeStep,
+} from './actions/step_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
+    ReactDOM.render(<Root />, document.getElementById('main'))
     let store = configureStore()
     window.store = store
-    ReactDOM.render(<Root />, document.getElementById('main'))
+
     window.receiveTodos = receiveTodos;
     window.receiveTodo = receiveTodo;
     window.removeTodo = removeTodo;
+    
+    window.receiveSteps = receiveSteps;
+    window.receiveStep = receiveStep;
+    window.removeStep = removeStep;
 })
