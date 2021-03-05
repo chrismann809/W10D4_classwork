@@ -11,12 +11,11 @@ const TodoList = (props) => {
             
             <ul>
                 {props.todos.map((todo) => {
-                    return <TodoListItem key={todo.id} todo={todo} />
+                    return <TodoListItem key={todo.id} todo={todo} receiveTodo = {props.receiveTodo} removeTodo = {props.removeTodo} />;
                 })}
-
             </ul>
 
-            <TodoForm receiveTodo = {props.receiveTodo}/>
+            <TodoForm receiveTodo = {props.receiveTodo} />
         </div>
     );
  
