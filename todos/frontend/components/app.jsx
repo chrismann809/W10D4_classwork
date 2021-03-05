@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Root = (props) => {
+const App = () => {
     return (
-        <div id='content'>
+        <div>
             <h1>Todos App</h1>
         </div>
     )
 }
 
-export default Root;
+export default App;
