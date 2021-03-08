@@ -3,7 +3,6 @@ import TodoForm from './todo_form'
 import TodoListItem from './todo_list_item'
 
 const TodoList = (props) => {
-    
     return(
         
         <div>

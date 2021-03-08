@@ -1,13 +1,26 @@
 import React from 'react'
+import StepList from '../step_list/step_list'
+import { stepsByTodoId } from '../../reducers/selectors'
 
-const TodoDetailView = (props) => {
-    return (
-        <div>
-            <p>{props.todo.body}</p>
-            <button onClick={() => props.removeTodo(props.todo)}>Delete</button>
-        </div>
-        
-    );
+class TodoDetailView extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            steps: store.getState().steps,
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <p>{this.props.todo.body}</p>
+                <button onClick={() => this.props.removeTodo(this.props.todo)}>Delete</button>
+                <StepList steps={ stepsByTodoId(this.state, this.props.todo.id) }/>
+            </div>
+            
+        );
+    }
 }
 
 // class todoDetailView extends React.Component {
