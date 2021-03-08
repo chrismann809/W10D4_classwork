@@ -15,6 +15,7 @@ import {
 } from './actions/step_actions';
 import {
     allTodos,
+    stepsByTodoId
 } from './reducers/selectors';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,4 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.removeStep = removeStep;
 
     window.allTodos = allTodos;
+
+    window.stepsByTodoId = stepsByTodoId;
 })
