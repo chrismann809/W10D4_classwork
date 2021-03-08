@@ -1,20 +1,49 @@
 import React from 'react'
-import TodoList from './todo_list';
+import TodoDetailView from './todo_detail_view';
+// import TodoList from './todo_list';
 
 
-const TodoListItem = (props) => {
-    let status = props.todo.done;
-    if (status) {
-        status = 'Complete'
-    } else {
-        status = 'In Progress'
+class TodoListItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            done: this.props.todo.done,
+            detail: false,
+        }
+        this.updateDone = this.updateDone.bind(this);
+        this.toggleDetail = this.toggleDetail.bind(this);
     }
-    return (
-        <li>{props.todo.title} 
-            <button onClick={() => props.removeTodo(props.todo)}>Delete</button>
-            <button onClick={() => props.todo.setState({ done: !props.todo.done })} >{status}</button>
-        </li>
-    );
+
+    updateDone(e) {
+        e.preventDefault();
+        const status = this.state.done
+        this.setState({
+            done: !status
+        });
+    }
+
+    toggleDetail(e) {
+        e.preventDefault();
+        this.setState({
+            detail: !this.state.detail, 
+        })
+    }
+
+    render () {
+        let status = this.state.done;
+        if (status) {
+            status = 'Complete'
+        } else {
+            status = 'In Progress'
+        }
+        return (
+            <li onClick={this.toggleDetail}>{this.props.todo.title} 
+                {/* <button onClick={() => this.props.removeTodo(this.props.todo)}>Delete</button> */}
+                <button onClick={this.updateDone} >{status}</button>
+                {this.state.detail ? <TodoDetailView todo={this.props.todo} removeTodo={this.props.removeTodo} /> : ''}
+            </li>
+        );
+    }
 }
 
-export default TodoListItem
+export default TodoListItem;
